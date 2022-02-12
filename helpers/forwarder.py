@@ -32,7 +32,7 @@ async def ForwardMessage(client: Client, msg: Message):
                 else:
                     await msg.forward(Config.FORWARD_TO_CHAT_ID[i])
             except FloodWait as e:
-                await asyncio.sleep(e.x)
+                await asyncio.sleep(5*60)
                 await client.send_message(chat_id="me", text=f"#FloodWait: Stopped Forwarder for `{e.x}s`!")
                 await asyncio.sleep(Config.SLEEP_TIME)
                 await ForwardMessage(client, msg)
